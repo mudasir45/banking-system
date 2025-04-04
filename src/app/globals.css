@@ -3,25 +3,49 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --primary: 2 62 138;
+  --primary-dark: 0 45 106;
+  --primary-light: 56 113 187;
+  --secondary: 240 248 255;
+  --accent: 0 119 182;
+  --text-primary: 33 37 41;
+  --text-secondary: 108 117 125;
+  --background: 255 255 255;
+  --background-alt: 248 249 250;
+  --success: 25 135 84;
+  --danger: 220 53 69;
+  --warning: 255 193 7;
+  --info: 0 180 216;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  body {
+    @apply bg-background text-text-primary;
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-}
+@layer components {
+  .container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  .link {
+    @apply text-primary hover:text-primary-dark transition-colors cursor-pointer;
+  }
+
+  .btn-primary {
+    @apply bg-primary hover:bg-primary-dark text-white px-4 py-2 rounded-md shadow-sm transition-colors;
+  }
+
+  .btn-outline {
+    @apply border border-primary text-primary hover:bg-primary hover:text-white px-4 py-2 rounded-md shadow-sm transition-colors;
+  }
+
+  .card {
+    @apply bg-background rounded-lg shadow-md p-6;
+  }
+
+  .input {
+    @apply w-full rounded-md border border-gray-300 p-2 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary;
   }
 }
